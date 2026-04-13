@@ -17,6 +17,8 @@ Mening portfolio botim 🤖
 bot.on("message", (msg) => {
   let chatid = msg.chat.id;
   let text = msg.text;
+  let admin = 8194599016;
+  let passowr = "pono0908";
 
   if (text == "/start") {
     bot.sendPhoto(
@@ -46,6 +48,22 @@ bot.on("message", (msg) => {
         },
       },
     );
+  }
+
+  if (text == "/panel") {
+    if (admin == msg.from.id) {
+      bot.sendMessage(chatid, "Hush kelibsiz admin🙂", {
+        reply_markup: {
+          keyboard: [
+            [{ text: "Statitika 📊" }, { text: "Habar 📲" }],
+            [{ text: "Chiqish 🏠" }],
+          ],
+          resize_keyboard: true,
+        },
+      });
+    } else {
+      bot.sendSticker(chatid, "https://t.me/ongoing_an1meelar/41");
+    }
   }
 });
 
@@ -183,4 +201,38 @@ Maqsadim — o‘zimning kuchli loyihalarimni yaratish va professional developer
     text: "Yuklanmoqda...",
     show_alert: false,
   });
+});
+
+let users = new Set();
+
+bot.on("message", (msg) => {
+  let text = msg.text;
+  let chatid = msg.chat.id;
+  users.add(msg.from.id);
+
+  switch (true) {
+    case text.toLowerCase().includes("stati"):
+      bot.sendMessage(
+        chatid,
+        `Statistika 📊\n\n foydalanuvchlar soni : ${users.size}`,
+      );
+      break;
+    case text.toLowerCase().includes("chiqi"):
+      bot.sendMessage(chatid, "Admin Paneldan chqdingiz 🏠", {
+        reply_markup: {
+          remove_keyboard: true,
+        },
+      });
+      break;
+    case text.toLowerCase().includes("habar" || ""):
+      bot.sendMessage(chatid, "Habar Kiritig:",);
+      let message = text.replace("habar")
+
+      users.forEach((item)=>{
+        bot.sendMessage(item, message)
+      })
+
+      bot.sendMessage(chatid, "Habar Yuborildi ✅")
+      break;
+  }
 });
