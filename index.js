@@ -6,8 +6,6 @@ const bot = new TelegramBot(TOKEN, { polling: true });
 const startText = `
 👋 Assalomu alaykum!
 
-Mening portfolio botim 🤖
-
 📌 Men haqimda
 💻 Loyihalar
 🛠 Skills
@@ -18,7 +16,7 @@ bot.on("message", (msg) => {
   let chatid = msg.chat.id;
   let text = msg.text;
   let admin = 8194599016;
-  let passowr = "pono0908";
+  let usersid = msg.from?.id;
 
   if (text == "/start") {
     bot.sendPhoto(
@@ -225,14 +223,14 @@ bot.on("message", (msg) => {
       });
       break;
     case text.toLowerCase().includes("habar" || ""):
-      bot.sendMessage(chatid, "Habar Kiritig:",);
-      let message = text.replace("habar")
+      bot.sendMessage(chatid, "Habar Kiritig:");
+      let message = text.replace("habar");
 
-      users.forEach((item)=>{
-        bot.sendMessage(item, message)
-      })
+      users.forEach((item) => {
+        bot.sendMessage(item, message);
+      });
 
-      bot.sendMessage(chatid, "Habar Yuborildi ✅")
+      bot.sendMessage(chatid, "Habar Yuborildi ✅");
       break;
   }
 });
