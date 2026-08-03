@@ -10,10 +10,10 @@ function startText(username, f, l) {
 <b> Hi! <a href="https://t.me/${username}">${f} ${l == true ? l : ''}</a> 👋
 
 ➢ My Pixelix-Bro
+➢ My Portfolio Pixelix.uz
 ➢ My Web Developer
 ➢ My Ai Engener
 ➢ My Mabile Developer
-➢ My Portfolio Pixelix.uz
 </b>
 </i>
 </blockquote>
@@ -89,6 +89,12 @@ bot.on('callback_query', (msg) => {
 ➢ React.js,                 ➢ yarn,
 ➢ Next.js,                   ➢ package,
 ➢ Preact.js,                ➢ git/github,
+</b></i></blockquote><blockquote><i><b>          ➦My Backend Skills⮪
+➢ Node.js,
+➢ Express,                                ➢ npm,
+➢ Mongose,                             ➢ yarn,
+➢ MOngoDb,                           ➢ package,
+➢ node-telegram-bot-api,     ➢ git/github,
 </b></i></blockquote>
 
 
