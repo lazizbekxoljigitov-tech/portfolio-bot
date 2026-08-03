@@ -1,136 +1,131 @@
-const TelegramBot = require("node-telegram-bot-api");
-require("dotenv").config();
-const TOKEN = process.env.token;
+const TelegramBot = require('node-telegram-bot-api')
+require('dotenv').config()
+const TOKEN = process.env.token
 
-const bot = new TelegramBot(TOKEN, { polling: true });
-const startText = `
-👋 Assalomu alaykum!
+const bot = new TelegramBot(TOKEN, { polling: true })
+function startText(username, f, l) {
+  return `
+<blockquote><i>
 
-📌 Men haqimda
-💻 Loyihalar
-🛠 Skills
-📞 Aloqa
-`;
+<b> Hi! <a href="https://t.me/${username}">${f} ${l == true ? l : ''}</a> 👋
 
-bot.on("message", (msg) => {
-  let chatid = msg.chat.id;
-  let text = msg.text;
-  let admin = 8194599016;
-  let usersid = msg.from?.id;
+➢ My Pixelix-Bro
+➢ My Web Developer
+➢ My Ai Engener
+➢ My Mabile Developer
+➢ My Portfolio Pixelix.uz
+</b>
+</i>
+</blockquote>
+`
+}
 
-  if (text == "/start") {
-    bot.sendPhoto(
-      chatid,
-      "https://formation.lefebvre-dalloz.fr/sites/default/files/styles/3_2_700/public/medias/images/2024-05/comment-developper-sa-creativite-avec-l-ia.png.webp?itok=5tJNC3FZ",
-      {
-        caption: startText,
-        reply_markup: {
-          inline_keyboard: [
-            [
-              {
-                text: "Adminga Habar ✈️",
-                url: "https://t.me/DEV_BR0",
-              },
-              {
-                text: "Men Haqimda ☺️",
-                callback_data: "my",
-              },
-            ],
-            [
-              {
-                text: "Skillarm 📊",
-                callback_data: "skil",
-              },
-            ],
+bot.on('message', (msg) => {
+  let chatid = msg.chat.id
+  let text = msg.text
+  let admin = 8194599016
+  let usersid = msg.from?.id
+  let username = msg.from.username
+  let f = msg?.from.first_name
+  let l = msg?.from.last_name
+
+  if (text == '/start') {
+    bot.sendPhoto(chatid, './img/banner.jpg', {
+      caption: startText(username, f, l),
+      parse_mode: 'HTML',
+      reply_markup: {
+        inline_keyboard: [
+          [
+            {
+              text: 'Adminga Habar ✈️',
+              url: 'https://t.me/Pixeelix',
+            },
+            {
+              text: 'Men Haqimda ☺️',
+              callback_data: 'my',
+            },
           ],
-        },
+          [
+            {
+              text: 'Skillarm 📊',
+              callback_data: 'skil',
+            },
+          ],
+        ],
       },
-    );
+    })
   }
 
-  if (text == "/panel") {
+  if (text == '/panel') {
     if (admin == msg.from.id) {
-      bot.sendMessage(chatid, "Hush kelibsiz admin🙂", {
+      bot.sendMessage(chatid, 'Hush kelibsiz admin🙂', {
         reply_markup: {
-          keyboard: [
-            [{ text: "Statitika 📊" }, { text: "Habar 📲" }],
-            [{ text: "Chiqish 🏠" }],
-          ],
+          keyboard: [[{ text: 'Statitika 📊' }, { text: 'Habar 📲' }], [{ text: 'Chiqish 🏠' }]],
           resize_keyboard: true,
         },
-      });
+      })
     } else {
-      bot.sendSticker(chatid, "https://t.me/ongoing_an1meelar/41");
+      bot.sendSticker(chatid, 'https://t.me/ongoing_an1meelar/41')
     }
   }
-});
+})
 
-bot.on("callback_query", (msg) => {
-  let data = msg.data;
-  let chatid = msg.message.chat.id;
-  let messageid = msg.message.message_id;
-
+bot.on('callback_query', (msg) => {
+  let data = msg.data
+  let chatid = msg.message.chat.id
+  let messageid = msg.message.message_id
+  let username = msg.from.username
+  let f = msg?.from.first_name
+  let l = msg?.from.last_name
   switch (data) {
-    case "skil":
-      if (data == "skil") {
+    case 'skil':
+      if (data == 'skil') {
         bot.editMessageCaption(
-          `💻 TECH SKILLS
+          `<b><i><a href="https://t.me/${username}">${f ? f : ''} ${l ? l : ''}</a> Bro My Tech Skills</i></b>
 
-⚡ Programming:
-- JavaScript (ES6+)
-- Node.js
+          <blockquote><i><b>          ➦My Frontend Skills⮪
+➢ Html/Css,               ➢ Tailwindcss
+➢ JavaScript,             ➢ npm,
+➢ React.js,                 ➢ yarn,
+➢ Next.js,                   ➢ package,
+➢ Preact.js,                ➢ git/github,
+</b></i></blockquote>
 
-🤖 Bot Development:
-- Telegram Bot API
-- node-telegram-bot-api
 
-🌐 Web:
-- HTML, CSS
-- API integration
-
-🛠 Tools:
-- Git, GitHub
-- VS Code
-
-🚀 Goal:
-Doimiy rivojlanish va yangi texnologiyalarni o‘rganish`,
+          `,
           {
             chat_id: chatid,
             message_id: messageid,
+            parse_mode: 'HTML',
             reply_markup: {
               inline_keyboard: [
                 [
                   {
-                    text: "🌐 Portfolio ",
-                    url: "https://dev-bro.netlify.app/pages/front-end",
-                    color: "red",
-                  },
-                  {
-                    text: "💻 GitHub Profilm ",
-                    url: "https://github.com/lazizbekxoljigitov-tech/",
-                    color: "blue",
+                    text: '💻 GitHub Profilm ',
+                    url: 'https://github.com/Pixelix-Bro/',
+                    color: 'blue',
                   },
                 ],
                 [
                   {
-                    text: "📩 Telegram Profilm ",
-                    url: "https://t.me/DEV_BR0",
-                    color: "blue",
+                    text: '📩 Telegram Profilm ',
+                    url: 'https://t.me/Pixeelix',
+                    color: 'blue',
                   },
                   {
-                    text: "«",
-                    callback_data: "back",
+                    text: '«',
+                    callback_data: 'back',
                   },
                 ],
               ],
             },
-          },
-        );
+          }
+        )
       }
-      break;
+      break
 
-    case "my":
-      if (data == "my") {
+    case 'my':
+      if (data == 'my') {
         bot.editMessageCaption(
           `
       👤 Men haqimda
@@ -149,88 +144,77 @@ Maqsadim — o‘zimning kuchli loyihalarimni yaratish va professional developer
       `,
           {
             chat_id: chatid,
+            parse_mode: 'HTML',
             message_id: messageid,
             reply_markup: {
               inline_keyboard: [
                 [
                   {
-                    text: "«",
-                    callback_data: "back",
+                    text: '«',
+                    callback_data: 'back',
                   },
                 ],
               ],
             },
-          },
-        );
+          }
+        )
       }
-      break;
+      break
 
-    case "back":
-      if (data == "back") {
-        return bot.editMessageCaption(startText, {
+    case 'back':
+      if (data == 'back') {
+        return bot.editMessageCaption(startText(username, f, l), {
           chat_id: chatid,
+          parse_mode: 'HTML',
           message_id: messageid,
           reply_markup: {
             inline_keyboard: [
               [
                 {
-                  text: "Adminga Habar ✈️",
-                  url: "https://t.me/DEV_BR0",
+                  text: 'Adminga Habar ✈️',
+                  url: 'https://t.me/DEV_BR0',
                 },
                 {
-                  text: "Men Haqimda ☺️",
-                  callback_data: "my",
+                  text: 'Men Haqimda ☺️',
+                  callback_data: 'my',
                 },
               ],
               [
                 {
-                  text: "Skillarm 📊",
-                  callback_data: "skil",
+                  text: 'Skillarm 📊',
+                  callback_data: 'skil',
                 },
               ],
             ],
           },
-        });
+        })
       }
-      break;
+      break
   }
 
   bot.answerCallbackQuery(msg.id, {
-    text: "Yuklanmoqda...",
+    text: 'Yuklanmoqda...',
     show_alert: false,
-  });
-});
+  })
+})
 
-let users = new Set();
+let users = new Set()
 
-bot.on("message", (msg) => {
-  let text = msg.text;
-  let chatid = msg.chat.id;
-  users.add(msg.from.id);
+bot.on('message', (msg) => {
+  let text = msg.text
+  let chatid = msg.chat.id
+  users.add(msg.from.id)
 
   switch (true) {
-    case text.toLowerCase().includes("stati"):
-      bot.sendMessage(
-        chatid,
-        `Statistika 📊\n\n foydalanuvchlar soni : ${users.size}`,
-      );
-      break;
-    case text.toLowerCase().includes("chiqi"):
-      bot.sendMessage(chatid, "Admin Paneldan chqdingiz 🏠", {
+    case text.toLowerCase().includes('stati'):
+      bot.sendMessage(chatid, `Statistika 📊\n\n foydalanuvchlar soni : ${users.size}`)
+      break
+    case text.toLowerCase().includes('chiqi'):
+      bot.sendMessage(chatid, 'Admin Paneldan chqdingiz 🏠', {
         reply_markup: {
           remove_keyboard: true,
         },
-      });
-      break;
-    case text.toLowerCase().includes("habar" || ""):
-      bot.sendMessage(chatid, "Habar Kiritig:");
-      let message = text.replace("habar");
-
-      users.forEach((item) => {
-        bot.sendMessage(item, message);
-      });
-
-      bot.sendMessage(chatid, "Habar Yuborildi ✅");
-      break;
+      })
+      break
   }
-});
+})
