@@ -35,17 +35,17 @@ bot.on('message', (msg) => {
         inline_keyboard: [
           [
             {
-              text: 'Adminga Habar ✈️',
+              text: 'Message Admin 🖅',
               url: 'https://t.me/Pixeelix',
             },
             {
-              text: 'Men Haqimda ☺️',
+              text: 'About Me ☙',
               callback_data: 'my',
             },
           ],
           [
             {
-              text: 'Skillarm 📊',
+              text: '✓ Me Skills',
               callback_data: 'skil',
             },
           ],
@@ -105,16 +105,14 @@ bot.on('callback_query', (msg) => {
               inline_keyboard: [
                 [
                   {
-                    text: '💻 GitHub Profilm ',
+                    text: '🡽 GitHub',
                     url: 'https://github.com/Pixelix-Bro/',
-                    color: 'blue',
                   },
                 ],
                 [
                   {
-                    text: '📩 Telegram Profilm ',
+                    text: '🡼 Telegram',
                     url: 'https://t.me/Pixeelix',
-                    color: 'blue',
                   },
                   {
                     text: '«',
@@ -166,17 +164,17 @@ Creating useful projects and seeing users' feedback, comments, and appreciation 
             inline_keyboard: [
               [
                 {
-                  text: 'Adminga Habar ✈️',
-                  url: 'https://t.me/DEV_BR0',
+                  text: 'Message Admin 🖅',
+                  url: 'https://t.me/Pixeelix',
                 },
                 {
-                  text: 'Men Haqimda ☺️',
+                  text: 'About Me ☙',
                   callback_data: 'my',
                 },
               ],
               [
                 {
-                  text: 'Skillarm 📊',
+                  text: '✓ Me Skills',
                   callback_data: 'skil',
                 },
               ],
