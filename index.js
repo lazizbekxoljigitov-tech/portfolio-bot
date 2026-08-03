@@ -12,8 +12,6 @@ function startText(username, f, l) {
 ➢ My Pixelix-Bro
 ➢ My Portfolio Pixelix.uz
 ➢ My Web Developer
-➢ My Ai Engener
-➢ My Mabile Developer
 </b>
 </i>
 </blockquote>
@@ -91,10 +89,10 @@ bot.on('callback_query', (msg) => {
 ➢ Preact.js,                ➢ git/github,
 </b></i></blockquote><blockquote><i><b>          ➦My Backend Skills⮪
 ➢ Node.js,
-➢ Express,                                ➢ npm,
-➢ Mongose,                             ➢ yarn,
-➢ MOngoDb,                           ➢ package,
-➢ node-telegram-bot-api,     ➢ git/github,
+➢ Express,                                ➢ Rest Api,
+➢ Mongose,                             ➢ Linux,
+➢ MOngoDb,                           ➢ Dotenv ,
+➢ node-telegram-bot-api,     ➢ JWT Authentication,
 </b></i></blockquote>
 
 
@@ -133,20 +131,11 @@ bot.on('callback_query', (msg) => {
     case 'my':
       if (data == 'my') {
         bot.editMessageCaption(
-          `
-      👤 Men haqimda
+          ` <b><i><a href="https://t.me/${username}">${f ? f : ''} ${l ? l : ''}</a> Bro About My</i></b><blockquote><b><i></i>Hi <a href="https://t.me/${username}">${f ? f : ''} ${l ? l : ''}</a> my name is Ubaydulloh welcome to my portfolio! Want to know more about me? Feel free to explore the information below. Let's get started!
+</b></blockquote><blockquote><b><i>✓ Let's start with my hobbies.</i></b></blockquote><blockquote><b><i>My hobbies are watching anime, playing football, and playing tennis. I’m also interested in golf, and I would like to learn how to play it in the future
+In my free time, I enjoy having interesting conversations, watching funny movies, and exploring different entertaining shows. These activities help me relax and enjoy my free time.</i></b></blockquote><blockquote><i><b>❖ My Interests</b></i></blockquote><blockquote><i>I’m interested in learning new technologies, exploring modern programming concepts, and discovering new syntax. I enjoy working with different companies and learning how they create their products.
 
-Men dasturlashga qiziqadigan yosh developerman 💻
-
-Bo‘sh vaqtlarimda animelar, dramalar va donghua ko‘rishni yoqtiraman 🎬
-Bu menga dam olish va yangi fikrlar olishga yordam beradi.
-
-Mening eng yaxshi ko‘rgan mashg‘ulotlarim:
-- Kod yozish va yangi narsalarni o‘rganish 💻
-- O‘zimning kichik loyihalarimni yaratish 🛠
-- O‘yinlar va kreativ g‘oyalar ustida ishlash 🎮
-
-Maqsadim — o‘zimning kuchli loyihalarimni yaratish va professional developer bo‘lish 🚀
+Creating useful projects and seeing users' feedback, comments, and appreciation is the most exciting part for me. It motivates me to keep learning and building better products.</i></blockquote>
       `,
           {
             chat_id: chatid,
