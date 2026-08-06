@@ -7,7 +7,7 @@ function startText(username, f, l) {
   return `
 <blockquote><i>
 
-<b> Hi! <a href="https://t.me/${username}">${f} ${l == true ? l : ''}</a> 👋
+<b> Hi! <a href="https://t.me/${username}">${f == true ? f : ''} ${l == true ? l : ''}</a> 👋
 
 ➢ My Pixelix-Bro
 ➢ My Portfolio Pixelix.uz
